@@ -1,0 +1,33 @@
+<h2>{{ student.id ? 'Edit' : 'Add' }} Student</h2>
+<form (ngSubmit)="save()" #f="ngForm">
+  <label>
+    Student ID:
+    <input name="studentId" [(ngModel)]="student.studentId" readonly>
+  </label><br>
+
+  <label>
+    Gender:
+    <select name="gender" [(ngModel)]="student.gender" required>
+      <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
+    </select>
+  </label><br>
+
+  <label>
+    Name:
+    <input name="name" [(ngModel)]="student.name" required>
+  </label><br>
+
+  <label>
+    Age:
+    <input name="age" type="number" [(ngModel)]="student.age" required>
+  </label><br>
+
+  <label>
+    Major:
+    <input name="major" [(ngModel)]="student.major" required>
+  </label><br>
+
+  <button type="submit" [disabled]="!f.form.valid">
+    {{ student.id ? 'Update' : 'Create' }}
+  </button>
+</form>

@@ -1,0 +1,43 @@
+<h2>Students</h2>
+
+<label>
+  Search by Student ID:
+  <input
+    type="text"
+    [(ngModel)]="searchId"
+    placeholder="e.g. 123456"
+  >
+</label>
+<button (click)="applySearch()">Search</button>
+
+<table>
+  <thead>
+  <tr>
+    <th># Index</th>
+    <th>Student ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Major</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of filteredStudents">
+    <td>{{ s.displayIndex }}</td>
+    <td>{{ s.studentId }}</td>
+    <td>{{ s.name }}</td>
+    <td>{{ s.age }}</td>
+    <td>{{ s.major }}</td>
+    <td>{{ s.gender}}</td>
+    <td>{{ s.email }}</td>
+    <td>
+      <button (click)="edit(s.id!)">Edit</button>
+      <button (click)="delete(s.id!)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button routerLink="/students/add">Add New Student</button>
